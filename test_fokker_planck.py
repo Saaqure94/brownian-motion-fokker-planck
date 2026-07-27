@@ -21,8 +21,8 @@ def test_analytical_density_integrates_to_one():
 def test_analytical_moments_match_theory():
     x = np.linspace(-15, 20, 4001)
     p = analytical_density(x, T, MU, SIGMA)
-    mean = np.trapezoid(x * p, x)
-    var = np.trapezoid((x - mean) ** 2 * p, x)
+    mean = np.trapz(x * p, x)
+    var = np.trapz((x - mean) ** 2 * p, x)
     assert abs(mean - MU * T) < 1e-6          # mean = mu*t
     assert abs(var - SIGMA ** 2 * T) < 1e-4   # variance = sigma^2*t
 
