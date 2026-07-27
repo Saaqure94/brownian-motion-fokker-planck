@@ -10,7 +10,7 @@ Three routes to the same answer:
   2. FiniteDifferenceSolver - explicit FTCS scheme on the PDE
   3. monte_carlo_simulation - Euler-Maruyama simulation of many random paths
 """
-
+from __future__ import annotations
 from dataclasses import dataclass
 import time
 
