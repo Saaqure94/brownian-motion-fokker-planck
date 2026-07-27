@@ -94,10 +94,10 @@ def run_finite_difference(con):
         res = solver.solve(T_FINAL, dx=0.02, r=r)
         p_exact = analytical_density(res.x, T_FINAL, MU, SIGMA)
         diff = res.p - p_exact
-        l2 = float(np.sqrt(np.trapezoid(diff ** 2, res.x)))
+        l2 = float(np.sqrt(np.trapz(diff ** 2, res.x)))
         l2_store = l2 if np.isfinite(l2) else None
-        emp_mean = float(np.trapezoid(res.x * res.p, res.x)) if res.stable else None
-        emp_var = (float(np.trapezoid((res.x - emp_mean) ** 2 * res.p, res.x))
+        emp_mean = float(np.trapz(res.x * res.p, res.x)) if res.stable else None
+        emp_var = (float(np.trapz((res.x - emp_mean) ** 2 * res.p, res.x))
                    if res.stable else None)
         con.execute(
             "INSERT INTO runs (method, mu, sigma, t_final, dt, dx, r,"
