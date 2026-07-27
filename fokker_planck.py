@@ -91,7 +91,7 @@ class FiniteDifferenceSolver:
                 p_new[0] = p_new[-1] = 0.0   # Dirichlet: density ~ 0 far away
                 p = p_new
 
-        mass = np.trapezoid(p, x)
+        mass = np.trapz(p, x)
         stable = bool(np.all(np.isfinite(p)) and abs(mass - 1.0) < 0.05
                       and float(np.max(np.abs(p))) < 1e3)
 
