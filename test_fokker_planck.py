@@ -14,7 +14,7 @@ MU, SIGMA, T = 1.5, 1.0, 2.0
 
 def test_analytical_density_integrates_to_one():
     x = np.linspace(-15, 20, 4001)
-    mass = np.trapezoid(analytical_density(x, T, MU, SIGMA), x)
+    mass = np.trapz(analytical_density(x, T, MU, SIGMA), x)
     assert abs(mass - 1.0) < 1e-8
 
 
